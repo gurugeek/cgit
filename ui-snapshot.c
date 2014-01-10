@@ -205,7 +205,7 @@ void cgit_print_snapshot(const char *head, const char *hex,
 	}
 
 	f = get_format(filename);
-	if (!f) {
+	if (!f || (snapshots & f->bit) == 0) {
 		show_error("Unsupported snapshot format: %s", filename);
 		return;
 	}

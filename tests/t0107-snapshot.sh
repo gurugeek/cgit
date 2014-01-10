@@ -79,4 +79,9 @@ test_expect_success UNZIP 'verify unzipped file-5' '
 	test_line_count = 1 master/file-5
 '
 
+test_expect_success 'try to download a disabled snapshot format' '
+	cgit_url "foo/snapshot/master.tar.xz" |
+	grep "Unsupported snapshot format"
+'
+
 test_done
