@@ -40,8 +40,10 @@ endif
 
 endif
 
-CGIT_LIBS += -ldl
-
+# Add -ldl to linker flags on non-BSD systems.
+ifeq ($(findstring BSD,$(shell uname -s)),)
+	CGIT_LIBS += -ldl
+endif
 
 
 CGIT_OBJ_NAMES += cgit.o
